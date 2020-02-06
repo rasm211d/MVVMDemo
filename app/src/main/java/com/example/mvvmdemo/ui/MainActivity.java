@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.example.mvvmdemo.R;
 import com.example.mvvmdemo.model.Model;
+import com.example.mvvmdemo.view.ViewModel;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -33,8 +34,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Model.model.setText(editText.getText().toString());
-                Model.model.addObserver(mainActivity);
+                ViewModel.viewModel.setText(editText.getText().toString());
             }
         });
     }
