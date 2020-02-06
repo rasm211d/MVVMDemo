@@ -1,6 +1,7 @@
 package com.example.mvvmdemo.model;
 import com.example.mvvmdemo.ui.MainActivity;
 import java.util.Observable;
+import java.util.Observer;
 
 public class Model extends Observable {
 
@@ -8,9 +9,7 @@ public class Model extends Observable {
 
     public static Model model = new Model();
 
-    private Model(){
-        addObserver(MainActivity.mainActivity);
-    }
+    private Model(){}
 
 
     public void setText(String text) {

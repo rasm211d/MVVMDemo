@@ -23,12 +23,10 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mainActivity=this;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mainActivity = this;
-
         button = findViewById(R.id.firstButton);
         textView = findViewById(R.id.firstTextView);
         editText = findViewById(R.id.firstEditText);
@@ -36,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
             @Override
             public void onClick(View v) {
                 Model.model.setText(editText.getText().toString());
+                Model.model.addObserver(mainActivity);
             }
         });
     }
