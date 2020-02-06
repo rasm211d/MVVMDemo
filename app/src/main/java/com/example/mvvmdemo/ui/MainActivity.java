@@ -11,21 +11,37 @@ import android.widget.TextView;
 import com.example.mvvmdemo.R;
 import com.example.mvvmdemo.model.Model;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Observable;
+import java.util.Observer;
+
+public class MainActivity extends AppCompatActivity implements Observer {
+    private Button button;
+    private TextView textView;
+    private EditText editText;
+    public static MainActivity mainActivity = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button button = findViewById(R.id.firstButton);
-        final TextView textView = findViewById(R.id.firstTextView);
-        final EditText editText = findViewById(R.id.firstEditText);
+        mainActivity = this;
+
+        button = findViewById(R.id.firstButton);
+        textView = findViewById(R.id.firstTextView);
+        editText = findViewById(R.id.firstEditText);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Model.model.setTextView(editText.getText().toString(), textView);
+                Model.model.setText(editText.getText().toString());
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        textView.setText(Model.model.getText());
     }
 }
