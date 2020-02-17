@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.example.mvvmdemo.R;
 import com.example.mvvmdemo.model.Model;
+import com.example.mvvmdemo.persistence.DBFacade;
 import com.example.mvvmdemo.view.ViewModel;
 
 import java.util.Observable;
@@ -22,8 +23,11 @@ public class MainActivity extends AppCompatActivity implements Observer {
     public static MainActivity mainActivity = null;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //DBFacade.createTable();
+
         mainActivity=this;
 
         super.onCreate(savedInstanceState);
